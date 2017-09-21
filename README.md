@@ -16,6 +16,13 @@ More details of what is expected can be found in the [more detailed specificatio
 
 ## Submitting your work
 
+This assignment has two submission components:
+
+1. source code via GitHub;
+2. source code for `DocumentSimilarity.java` as a PDF file for peer review, submitted via Canvas.
+
+### Submitting source code
+
 To submit source code, from the `f17-mp2-<your username>` directory, use the following `git` commands:
 
 ```git
@@ -27,3 +34,7 @@ git push
 You can push your work to GitHub as many times as you want until the assignment deadline. We recommend that you commit and push your work to GitHub regularly (with every significant change to your source code) so that you have a history of changes and a backup in case your own device fails. Only your final submission will be used for marking. (You can also change the git commit message each time to something more meaningful than just "MP2 submission".)
 
 > Note that the `git` commands in the previous step were provided as an example. You should get comfortable with using `git` as the situation demands.
+
+### Code review
+
+On [Canvas](https://canvas.ubc.ca/), upload a PDF file with the code for `DocumentSimilarity.java` alone. Each submission will be assigned, at random, to a peer for code review.
