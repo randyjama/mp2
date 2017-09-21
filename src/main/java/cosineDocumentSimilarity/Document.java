@@ -72,6 +72,13 @@ public class Document implements Comparable<Document> {
 		return url.hashCode();
 	}
 
+	/**
+	 * Compare two Document objects. Allows for ordering of Document objects.
+	 * 
+	 * @param other
+	 *            Document to compare this document with
+	 * @return 0 if the two Documents are equal, and a non-zero value otherwise
+	 */
 	public int compareTo(Document other) {
 		if (this.equals(other))
 			return 0;
