@@ -5,6 +5,11 @@
 build/
 bin/
 
+# ignore some grade files
+.gradle/
+gradle/
+settings.gradle
+
 # ignore package files
 *.jar
 *.war
