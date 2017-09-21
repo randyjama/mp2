@@ -38,4 +38,4 @@ You can push your work to GitHub as many times as you want until the assignment 
 
 ### Code review
 
-On [Canvas](https://canvas.ubc.ca/), upload a PDF file with the code for `DocumentSimilarity.java` alone. Each submission will be assigned, at random, to a peer for code review.
+On [Canvas](https://canvas.ubc.ca/), upload a PDF file with the code for `DocumentSimilarity.java` alone. Each submission will be assigned, at random, to a peer for code review. This step will be anonymous so ensure that you do not have your name or other identifying information in the file that you upload.
