@@ -7,6 +7,7 @@ CPEN 221 - MP2 - Fall 2017
 * Due October 2, by 11:59 p.m.
 * This is an *individual* assignment.
 * This assignment has a weight of 6% towards your final *raw* grade.
+* Get started by using [this GitHub Classroom link](https://classroom.github.com/a/k3UhZPR3) to obtain a repository.
 
 ## Background
 
