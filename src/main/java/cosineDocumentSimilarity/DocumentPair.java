@@ -15,6 +15,14 @@ public class DocumentPair implements Comparable<DocumentPair> {
 	 */
 	public DocumentPair(Document doc1, Document doc2) {
 		// TODO: Implement this method
+		this.doc1 = doc1;
+		this.doc2 = doc2;
+	}
+	
+	//find csim100 between doc1 and doc2
+	public int docSimilarity() {
+		int csim100_pair = doc1.cosineSimilarity(doc2);
+		return csim100_pair;
 	}
 
 	/**
@@ -30,9 +38,16 @@ public class DocumentPair implements Comparable<DocumentPair> {
 	 */
 	public int compareTo(DocumentPair other) {
 		// TODO: Implement this method
-		return 0;
+		if (docSimilarity() < other.docSimilarity()) {
+			return -1;
+		}
+		else if (docSimilarity() == other.docSimilarity()) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
 	}
-
 	// You should not have to implement/change anything below this comment
 
 	/**
