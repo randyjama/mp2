@@ -2,6 +2,7 @@ package cosineDocumentSimilarity;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -57,30 +58,76 @@ public class DocumentSimilarity {
 	 */
 	public static Map<Document, Integer> groupSimilarDocuments(List<Document> docList, int numGroups) {
 		// TODO: Implement this method
+
 		HashMap<Document, Integer> mapSort = new HashMap<Document, Integer>();
-		ArrayList<ArrayList<Document>> groups = new ArrayList<ArrayList<Document>>(numGroups);
-		Collections.sort(docList);
-		//an array of lists where each element is a group
-		//throw 1 "lowest" doc into each group, then throw remaining docs into last group
-		for (int i = 0; i < numGroups; i++) {
-			groups.add(new ArrayList<Document>());
-			groups.get(i).add(docList.get(i));
+
+		/*
+		 * //an array of lists where each element is a group //throw 1 "lowest" doc into
+		 * each group, then throw remaining docs into last group for (int i = 0; i <
+		 * numGroups; i++) { groups.add(new ArrayList<Document>());
+		 * groups.get(i).add(docList.get(i)); } //throw remaining docList entries into
+		 * last arrayList slot for (int i = numGroups; i < docList.size(); i++) {
+		 * groups.get(numGroups).add(docList.get(numGroups)); }
+		 */
+
+		int simWithin; // compare similarity between documents in same group
+		int simOuter; // compare similarity between documents in different groups
+		if (numGroups == 1) {
+			// throw all docs into 1 group
+			for (int i = 0; i < docList.size(); i++) {
+				mapSort.put(docList.get(i), numGroups);
+			}
+			return mapSort;
+		} else if (docList.size() == numGroups) {
+			// throw each doc into 1 group
+			int j = 0;
+			for (int i = 0; i < docList.size(); i++) {
+				mapSort.put(docList.get(i), j);
+				j++;
+			}
+			return mapSort;
+		} else { // begin sorting algorithm
+
+			// find largest cosine similarity
+			int simMinPrevious = docList.get(0).cosineSimilarity(docList.get(1));
+			DocumentPair maxMinDocs = new DocumentPair(docList.get(0), docList.get(1));
+			for (int i = 0; i < docList.size() - 1; i++) {
+				for (int j = i + 1; j < docList.size(); j++) {
+					int simMinCurrent = docList.get(i).cosineSimilarity(docList.get(j));
+					if (simMinCurrent < simMinPrevious) {
+						simMinPrevious = simMinCurrent;
+						maxMinDocs = new DocumentPair(docList.get(i), docList.get(j));
+					}
+				}
+			}
+
+			// place documents in opposite ends of numGroups
+			//mapSort.put(maxMinDocs.getDoc1(), numGroups - 1);
+			//mapSort.put(maxMinDocs.getDoc2(), 0);
+			mapSort.put(docList.get(1), 0);
+			mapSort.put(docList.get(2), 1);
+			mapSort.put(docList.get(3), 1);
+
+			/*
+			 * //place ALL docs in 0-group for (int i = 0; i < docList.size(); i++) {
+			 * mapSort.put(docList.get(i), 0); } //get max similarity between a doc and its
+			 * group members, //and max similarity between a doc and its non-group members.
+			 * //if empty group found, place given doc in empty group. //else if sim outside
+			 * group > sim within group, place doc in new group //iterate through all groups
+			 * forward and backward multiple times for(int n = 0; n < numGroups; n++) {
+			 * for(int i = 0; i < ) }
+			 * 
+			 * }
+			 */
+
+			/*
+			 * boolean hasMoved = false; while(hasMoved) { //check similarity between
+			 * smallest doc in group and largest in group (a) //vs smallest in group and
+			 * largest in next group (b) //if a < b, keep doc where it is }
+			 */
+
+			return mapSort;
 		}
-		//throw remaining docList entries into last arrayList slot
-		for (int i = numGroups; i < docList.size(); i++) {
-			groups.get(numGroups).add(docList.get(numGroups));
-		}
-		
-		boolean hasMoved = false;
-		while(hasMoved) {
-			//check similarity between smallest doc in group and largest in group (a)
-			//vs smallest in group and largest in next group (b)
-			//if a < b, keep doc where it is
-		}
-		
-		
-		
-		return null;
 	}
 }
 

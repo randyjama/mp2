@@ -64,6 +64,7 @@ public class Document implements Comparable<Document> {
 				//		continue;
 				//	}
 				
+				//non-unique word found
 				if (words.containsKey(word)) {
 					int[] counts = words.get(word);
 					counts[i]++;

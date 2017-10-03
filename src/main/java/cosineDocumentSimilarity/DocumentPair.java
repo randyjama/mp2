@@ -41,11 +41,11 @@ public class DocumentPair implements Comparable<DocumentPair> {
 		if (docSimilarity() < other.docSimilarity()) {
 			return -1;
 		}
-		else if (docSimilarity() == other.docSimilarity()) {
-			return 0;
-		}
-		else {
+		else if (docSimilarity() > other.docSimilarity()) {
 			return 1;
+		}
+		else {//equal to
+			return 0;
 		}
 	}
 	// You should not have to implement/change anything below this comment
